@@ -20,7 +20,7 @@ const registerUser = async(req, res) => {
         const hashedPassword = await bycrypt.hash(password, salt);
 
         const result = await db.query(
-            "INSERT INTO users (email, phone, password, full_name, role) VALUES ($1, $2, $3, $4, 'user') RETURNING id, email, phone, full_name, role, created_at",
+            "INSERT INTO users (email, phone, password_hash, full_name, role) VALUES ($1, $2, $3, $4, 'user') RETURNING id, email, phone, full_name, role, created_at",
             [email, phone , hashedPassword, fullName]
         );
 

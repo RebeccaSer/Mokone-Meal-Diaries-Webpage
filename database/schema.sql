@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS recipes (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     title VARCHAR(255) NOT NULL,
     description TEXT,
-    instructions TEXT,,
+    instructions TEXT,
     servings_min INT DEFAULT 2,
     servings_max INT DEFAULT 4,
     image_url VARCHAR(500),
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS recipe_ingredients (
     recipe_id UUID REFERENCES recipes(id) ON DELETE CASCADE,
     ingredient_id INT REFERENCES ingredients(id),
     quantity DECIMAL(10,2) NOT NULL,
-    unit_id INT REFERENCES measurement_units(id)
+    unit_id INT REFERENCES measurement_units(id),
     PRIMARY KEY (recipe_id, ingredient_id)
 );
 
